@@ -16,7 +16,7 @@ router.post('/signup', async (req, res)=>{
         res.status(201).send(learner)
 
     }catch(e){
-        res.status(500).send()
+        res.status(500).send("There is something wrong try again!!")
     }
 })
 
@@ -30,7 +30,7 @@ router.post('/learner/login', async (req, res , next) =>{
         res.send({ learner, token})
         
     } catch (e) {
-        res.status(400).send(e)
+        res.status(400).send("Unable to login")
         
     }
 })
@@ -60,7 +60,7 @@ router.get('/learners/:id', auth, async (req, res)=>{
 })
 
 
-router.patch('/learner/:id', auth, async (req, res, next)=>{
+router.patch('/learner/me', auth, async (req, res, next)=>{
     const _id = req.params.id
     const updates = Object.keys(req.boy)
     const allowedUpdates = ['firstName','lastName','email','password','phone']
