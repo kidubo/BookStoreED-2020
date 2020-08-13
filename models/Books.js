@@ -1,6 +1,7 @@
 require ('mongoose')
+const { Schema, Mongoose } = require('mongoose')
 
-const Books = mongoose.model('Books' , {
+const booksSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true,
@@ -26,13 +27,28 @@ const Books = mongoose.model('Books' , {
     published_date : {
         type: String,
         required: true
-    }
+    },
 
-    // id: {
-    //     type: String,
-    //     required: true
-    // }         
-    
-    // MONGOOSE TAKE CARES OF THE ID'S
+    book_img :{
+        type: Image,
+        required: true
+    },
+
+    description: {
+        type: String,
+        required: true
+    },
+
+    // owner : {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     required: true,
+    //     ref : 'Learner'
+    // }
+
 
 })
+
+
+const Books = mongoose.model('Books' ,booksSchema )
+
+module.exports = Books
