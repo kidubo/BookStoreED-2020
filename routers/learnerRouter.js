@@ -41,27 +41,9 @@ router.get('/learner/me', auth , async (req, res)=>{
    res.send(req.learner)
 })
 
-router.get('/learners/:id', auth, async (req, res)=>{
-    const _id = req.params.id
-
-    try {
-        const learner = await Learner.findById(_id)
-
-        if(!learner){
-            return res.status(404).send('No User found')
-        }
-
-        res.send(learner)
-        
-    } catch (e) {
-        res.status(400).send(e)
-        
-    }
-})
-
 
 router.patch('/learner/me', auth, async (req, res, next)=>{
-    const _id = req.params.id
+   
     const updates = Object.keys(req.boy)
     const allowedUpdates = ['firstName','lastName','email','password','phone']
     const isValidOperator = updates.every((updates)=>{
@@ -78,7 +60,7 @@ router.patch('/learner/me', auth, async (req, res, next)=>{
         })
 
         await req.learner.save()
-        res.send(req.user)
+        res.send(req.learner)
 
     } catch (e) {
         res.status(400).send(e)

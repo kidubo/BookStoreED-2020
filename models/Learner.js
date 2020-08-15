@@ -50,7 +50,19 @@ const learnerSchema = new mongoose.Schema({
 
     
 
+}, {
+    timestamps:  true
 })
+
+
+// learnerSchema.methods.toJSON = function (){
+//     const learner = this
+
+//     delete learnerObject.tokens
+//     delete learner.password
+
+//     return learner
+// }
 
 
 learnerSchema.methods.generateAuthToken = async function (){

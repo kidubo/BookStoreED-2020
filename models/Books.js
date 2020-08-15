@@ -8,8 +8,9 @@ const booksSchema = new mongoose.Schema({
     },
 
     author: {
-        type:String,
-        required: true
+        type:mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Author'
     },
 
     ISBN : {
@@ -39,11 +40,11 @@ const booksSchema = new mongoose.Schema({
         required: true
     },
 
-    // owner : {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     required: true,
-    //     ref : 'Learner'
-    // }
+    owner : {
+        type : mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Learner'
+    }
 
 
 })
